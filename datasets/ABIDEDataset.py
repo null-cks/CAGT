@@ -4,7 +4,7 @@ from os.path import join, isfile
 from os import listdir
 import numpy as np
 import os.path as osp
-from read_data import read_data, read_sigle_data, read_data_aal90, read_sparse_BrainNet,read_sigle_data_kedge,read_sigle_data_kedge2,read_comm_data,read_dynamic_graph,read_comm_data2,read_comm_datats,read_comm_data3
+from read_data import read_comm_data
 from tqdm import tqdm
 from comm_utils import get_dist_matrix,get_comm_index,get_pheno_info
 
@@ -43,7 +43,7 @@ class ABIDEDataset(InMemoryDataset):
         ri = get_comm_index()
 
         for i, f in enumerate(tqdm(self.raw_file_names, desc="Processing data")):
-            data_list.append(read_comm_data2(osp.join(self.root, self.raw_dir), f, dm, co, ri, edge_num=30, pe_dim=30))
+            data_list.append(read_comm_data(osp.join(self.root, self.raw_dir), f, dm, co, ri, edge_num=30, pe_dim=30))
 
 
         data_list = [elem for elem in data_list if elem is not None]
