@@ -49,7 +49,6 @@ class GraphTransformer(nn.Module):
         self.pe_dim = pe_dim
         if pe and pe_dim > 0:
             self.embedding_pe = nn.Linear(pe_dim, d_model)
-            # self.embedding_pe = nn.Linear(3, d_model)
 
         self.embedding = nn.Linear(in_features=in_size, out_features=d_model, bias=True)
 
@@ -173,3 +172,4 @@ class GraphTransformer(nn.Module):
         x = x.reshape((x.shape[0], -1))
 
         return self.fc(x)
+
