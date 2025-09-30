@@ -9,7 +9,7 @@ This project introduces a novel Community-Aware Graph Transformer (CAGT), a fram
 Abnormal brain functional networks are effective biomarkers for diagnosing brain diseases. While most existing methods focus on whole-brain connectivity patterns, they often overlook the multi-level collaboration that is fundamental to efficient brain function. Our proposed method, CAGT, enhances information exchange within and between functional communities by using dual-scale feature fusion to capture interactive information across various scales. Additionally, it leverages prior knowledge to design brain region positional encoding and to guide the self-attention mechanism, thereby improving the Transformer's spatial awareness and aligning it more closely with the brain's natural information transfer processes.
 
 ## Framework
-![architecture](./figure/method.png)
+![architecture](./method.png)
 *Figure: The overall framework of the proposed CAGT method, adapted from the source paper.*
 
 The overall framework of CAGT is illustrated below, consisting of three primary modules:
@@ -98,6 +98,7 @@ If you use this work in your research, please cite our paper:
   url       = {https://doi.org/10.24963/ijcai.2025/467},
 }
 ```
+
 
 
 
