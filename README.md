@@ -10,14 +10,13 @@ Abnormal brain functional networks are effective biomarkers for diagnosing brain
 
 ## Framework
 ![architecture](./figure/method.png)
+*Figure: The overall framework of the proposed CAGT method, adapted from the source paper.*
 
 The overall framework of CAGT is illustrated below, consisting of three primary modules:
 
 1.  **Brain Graph Construction**: Rearranges the rows and columns of the functional connectivity matrix and sparsifies it to construct a whole-brain topology and multiple community subgraphs.
 2.  **Dual-Scale Spatial Feature Fusion**: Gathers information at both the node and community scales to obtain a more comprehensive representation of brain regions.
 3.  **Prior Guided Graph Transformer**: Implements brain disorder identification using a specially designed positional encoding and attention mechanism that aligns with brain function.
-
-*Figure: The overall framework of the proposed CAGT method, adapted from the source paper.*
 
 
 
@@ -38,7 +37,7 @@ For each subject, the brain is parcellated into 200 regions of interest (ROIs) u
 Use the following command to train the model. You can adjust the hyperparameters as needed.
 
 ```bash
-python train.py
+python train.py --root_dir ./dataset/ABIDE_I --epochs 70 --batch_size 64 --dropout 0.2
 ```
 
 ### Dependencies
@@ -99,6 +98,7 @@ If you use this work in your research, please cite our paper:
   url       = {https://doi.org/10.24963/ijcai.2025/467},
 }
 ```
+
 
 
 
