@@ -155,18 +155,6 @@ class Attention(gnn.MessagePassing):
         comm_weight.fill_diagonal_(0)
         return comm_weight
 
-    def community_distance_weight_matrix(self, distances, alpha, epsilon):
-        comm_index = [0, 23, 59, 82, 101, 127, 144, 169, 200]
-
-        # 基本权重计算
-        weight_matrix = torch.exp(-distances ** 2 / (2 * alpha ** 2))
-
-        comm_weight = torch.zeros_like(weight_matrix)  # 初始化权重矩阵，确保其大小和距离矩阵相同
-        for start, end, eps in zip(comm_index[:-1], comm_index[1:], epsilon):
-            comm_weight[start:end, start:end].fill_(eps)  # 使用.fill_() 来填充子矩阵
-
-
-        return weight_matrix + comm_weight
 
 
 
@@ -299,3 +287,4 @@ class TransformerEncoderLayer(nn.TransformerEncoderLayer):
         if not self.pre_norm:
             x = self.norm2(x)
         return x
+
