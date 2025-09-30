@@ -18,7 +18,7 @@ from torch_geometric import datasets
 import torch_geometric.utils as utils
 
 from datasets.ABIDEDataset import ABIDEDataset
-from datasets.utils import train_val_test_split,train_test_splitKFold,StratifiedKFold_tr_te_lab,train_val_test_split712,StratifiedShuffleSplit_tr_vl_te,StratifiedShuffleSplit_tr_te,StratifiedKFold_tr_te
+from datasets.utils import train_val_test_split,train_test_splitKFold,StratifiedKFold_tr_te_lab,StratifiedShuffleSplit_tr_vl_te,StratifiedShuffleSplit_tr_te,StratifiedKFold_tr_te
 
 from model.models import GraphTransformer
 from model.data import GraphDataset
@@ -258,8 +258,6 @@ def main():
         path = os.path.join(args.root_dir, args.data_dir)
     dataset = ABIDEDataset(path)
 
-    # tr_index, te_index = StratifiedKFold_tr_te(n_splits=args.Kfold, random_state=1234, n_sub=len(dataset))
-    # tr_index, te_index = StratifiedKFold_tr_te_lab(n_splits=args.Kfold, random_state=42, n_sub=len(dataset), x=dataset.data.x, label=dataset.data.y)
     tr_index, te_index = train_test_splitKFold(kfold=args.Kfold, random_state=42, n_sub=len(dataset))
 
     acc_list = []
@@ -429,3 +427,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
