@@ -48,36 +48,6 @@ def train_test_splitKFold(kfold=5, random_state=42,n_sub = 1035):
     return train_index,  test_index
 
 
-# 5k 7:1:2
-def train_val_test_split712(kfold=5, fold=0, n_sub = 10):
-    id = list(range(n_sub))
-
-    random.seed(123)
-    random.shuffle(id)
-
-    kf = KFold(n_splits=kfold, random_state=0, shuffle=True)
-    kf2 = KFold(n_splits=8, random_state=0, shuffle=True)
-    # kf3 = KFold(n_splits=kfold-2, random_state=0, shuffle=True)
-
-    test_index = list()
-    val_index = list()
-    train_index = list()
-    index = 0
-
-    for tr1, te1 in kf.split(np.array(id)):
-        tr2, te2 = list(kf2.split(tr1))[index]
-        # index += 1
-        # tr_id, val_id = list(kf3.split(tr2))[0]
-        train_index.append(tr1[tr2])
-        val_index.append(tr1[te2])
-        test_index.append(te1)
-
-    train_id = train_index[fold]
-    val_id = val_index[fold]
-    test_id = test_index[fold]
-
-    return train_id.astype(np.int64),  val_id.astype(np.int64), test_id.astype(np.int64)
-
 #按站点划分tr_te
 def StratifiedShuffleSplit_tr_te(n_splits=5, train_set=0.7, te_set=0.3, random_state=42, n_sub=1009):
     if n_sub == 1009:
@@ -175,4 +145,5 @@ def StratifiedKFold_tr_te_lab(n_splits=5, random_state=42, n_sub=1035, x=None, l
         test_index.append(te_id.astype(np.int64))
 
     return train_index, test_index
+
 
