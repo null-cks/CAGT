@@ -135,10 +135,6 @@ class Attention(gnn.MessagePassing):
 
     def distance_weight_matrix(self, distances, alpha):
         # 使用指数衰减和高斯调节来计算权重
-        # weight_matrix = torch.exp(-alpha * distances) + beta * torch.exp(-gamma * (distances - delta) ** 2)
-        # weight_matrix = torch.exp(-alpha * distances) + beta * torch.exp(-distances ** 2)
-        # weight_matrix = torch.exp(-alpha * distances)
-
         weight_matrix = torch.exp(-distances ** 2 / (2 * alpha ** 2))
         weight_matrix = weight_matrix.clone()
         weight_matrix.fill_diagonal_(0)
@@ -225,11 +221,6 @@ class SpatialExtractor(nn.Module):
         if self.batch_norm:
             x_struct = self.bn(x_struct)
 
-        # x_struct = self.out_proj(x_struct)
-        # x_struct = F.relu(self.out_proj2(x_struct)) + x
-        # x_struct = x_struct
-        # x_struct = self.fuse_lin(x_struct)
-
         return x_struct
 
 
@@ -287,4 +278,5 @@ class TransformerEncoderLayer(nn.TransformerEncoderLayer):
         if not self.pre_norm:
             x = self.norm2(x)
         return x
+
 
