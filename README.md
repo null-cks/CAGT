@@ -10,7 +10,6 @@ Abnormal brain functional networks are effective biomarkers for diagnosing brain
 
 ## Framework
 ![architecture](./method.png)
-*Figure: The overall framework of the proposed CAGT method, adapted from the source paper.*
 
 The overall framework of CAGT is illustrated below, consisting of three primary modules:
 
@@ -98,6 +97,7 @@ If you use this work in your research, please cite our paper:
   url       = {https://doi.org/10.24963/ijcai.2025/467},
 }
 ```
+
 
 
 
